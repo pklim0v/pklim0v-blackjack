@@ -19,6 +19,7 @@ class Player:
 class Card:
     def __init__(self, card):
         self.suit = card[0]
-        self.name = card[1]
+        self.name = card[1][0]
+        self.points = card[1][1]
 
 
