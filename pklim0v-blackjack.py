@@ -35,5 +35,7 @@ if __name__ == '__main__':
     print_greeting()
     players = setup_players()
     deck = deck.generate_deck()
-    print(players)
-    print(deck)
+    players[0].take_card(deck.pop(0))
+
+    print('This is the end!')
+
