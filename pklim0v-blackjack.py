@@ -8,10 +8,10 @@ def print_greeting():
 
 def setup_players():
 
-    players_quantity = 0.1
+    players_quantity = 0.0
 
     while players_quantity > 7 or players_quantity < 2:
-        players_quantity = 0.1
+        players_quantity = 0.0
         while type(players_quantity) is not int:
             try:
                 players_quantity = int(input('Please specify the quantity of players (2-7): '))
@@ -26,7 +26,7 @@ def setup_players():
         player_name = input('\nPlayer {number}, please tell us your name: '.
                             format(number=player + 1))
         players.append(Player(player_name))
-        print('\nIt is nice to meet you, {name}! But let\'s go on.'.format(name=players[player].name))
+        print('\nIt is nice to meet you, {name}!'.format(name=players[player].name))
 
     return players
 
@@ -35,7 +35,11 @@ if __name__ == '__main__':
     print_greeting()
     players = setup_players()
     deck = deck.generate_deck()
-    players[0].take_card(deck.pop(0))
+    dealer = Player('Dealer')
+    for i in range(10):
+        players[0].take_card(deck.pop(0))
+    players[0].take_card(deck.pop(0), False)
+    print(players[0].print_cards())
 
     print('This is the end!')
 
